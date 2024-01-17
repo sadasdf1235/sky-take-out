@@ -6,6 +6,7 @@ import com.sky.entity.Employee;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface EmployeeMapper {
@@ -44,4 +45,10 @@ public interface EmployeeMapper {
      */
     @Select("select * from employee where id = #{id}")
     Employee getById(Long id);
+
+    @Select("select count(name) from employee where id = #{empId} and password = #{oldPassword}")
+    int checkOldPas(Long empId, String oldPassword);
+
+    @Update("update employee set password = #{newPassword} where id = #{empId}")
+    void editPas(Long empId, String newPassword);
 }

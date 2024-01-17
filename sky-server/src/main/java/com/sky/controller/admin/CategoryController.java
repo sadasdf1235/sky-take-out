@@ -74,4 +74,17 @@ public class CategoryController {
         List<Category> result = categoryService.pageByType(type);
         return Result.success(result);
     }
+
+    /**
+     * 新增分类
+     * @param categoryDTO
+     * @return
+     */
+    @PostMapping
+    @ApiOperation("新增分类")
+    public Result save(@RequestBody CategoryDTO categoryDTO){
+        log.info("新增分类 {]",categoryDTO);
+        categoryService.save(categoryDTO);
+        return Result.success();
+    }
 }

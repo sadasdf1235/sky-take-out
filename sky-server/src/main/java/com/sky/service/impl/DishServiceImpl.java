@@ -83,9 +83,9 @@ public class DishServiceImpl implements DishService {
      */
     @Transactional
     @Override
-    public void delete(List<String> ids) {
+    public void delete(List<Long> ids) {
         // 起售中的商品不能删除
-        for (String id : ids) {
+        for (Long id : ids) {
             Dish dish = dishMapper.getById(id);
             if(dish.getStatus() == StatusConstant.ENABLE){ // 菜品处于起售
                 throw new DeletionNotAllowedException(MessageConstant.SETMEAL_ON_SALE);
@@ -99,9 +99,7 @@ public class DishServiceImpl implements DishService {
         }
 
         // 删除菜品及口味
-        for (String id : ids) {
-            dishMapper.delete(id);
-            dishFlavorMapper.delete(id);
-        }
+        dishMapper.delete(ids);
+        dishFlavorMapper.delete(ids);
     }
 }

@@ -71,7 +71,7 @@ public class CategoryController {
     @GetMapping("/list")
     public Result pageByType(Integer type){
         log.info("根据类型查询分类 {}",type);
-        List<Category> result = categoryService.pageByType(type);
+        List<Category> result = categoryService.list(type);
         return Result.success(result);
     }
 

@@ -68,8 +68,8 @@ public class CategoryServiceImpl implements CategoryService {
      * @return
      */
     @Override
-    public List<Category> pageByType(Integer type) {
-        List<Category> result = categoryMapper.pageByType(type);
+    public List<Category> list(Integer type) {
+        List<Category> result = categoryMapper.list(type);
         return result;
     }
 

@@ -27,7 +27,7 @@ public interface CategoryService {
      * @param type
      * @return
      */
-    List<Category> pageByType(Integer type);
+    List<Category> list(Integer type);
 
     /**
      * 分类修改
